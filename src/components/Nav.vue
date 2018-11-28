@@ -1,6 +1,5 @@
 <template>
-
-    <nav vertical class="navbar-dark">
+  <nav vertical class="navbar-dark">
     <ul class="navbar-nav">
       <li class="nav-item">
         <router-link class="nav-link" exact-active-class="active" to="/">Home</router-link>
@@ -13,27 +12,36 @@
       </li>
     </ul>
     </nav>
-    <!--
-  <nav tabs vertical class="w-10">
-    <nav-item active><router-link class="nav-link" exact-active-class="active" to="/">Home</router-link></nav-item>
-    <nav-item><router-link class="nav-link" exact-active-class="active" to="/about">About</router-link></nav-item>
-    <nav-item><router-link class="nav-link" exact-active-class="active" to="/game">Game</router-link></nav-item>
-  </nav>-->
 
 </template>
 
 <style lang="scss">
-.navbar-nav {
-    
-    height: 50%;
-    width: 240px;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    background-color: rgba(11, 31, 9, 0.6);
-    overflow-x: hidden;
-    padding-top: 20px;
-    padding-left: 20px;
-}
+@import "C:/Users/mike6/Desktop/Hw/WP/fitnessing/node_modules/bootstrap/scss/bootstrap.scss";
 
+nav {
+  top: 60px;
+  height: 100%;
+  width: 220px;
+  position: fixed;
+  left: 0px;
+  background-color: #888888;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+
+  ul{
+    padding-top:20px;
+    text-align: center;
+  }
+
+  li{
+    padding: 6px 12px;
+    
+  }
+  
+
+}
+.navbar-dark .navbar-nav .nav-link {
+    color:red;
+  }
 </style>

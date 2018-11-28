@@ -1,27 +1,36 @@
 <template>
 <div>
-    <div class="display-4">
-      <img alt="Vue logo" src="./assets/fit-logo.png" id="logo">
-      FITNESSING
-      </div>
-      <Nav />
-      <div id="app" class="container">
-      
-    <router-view/>
+  <div class = "topbar">
+    <h1>FITNESSING</h1>
+    <Nav />
   </div>
-  
+    <div id="app" class="container">
+      <router-view/>
+    </div>
 </div>
 </template>
 
 <style lang="scss">
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
-#logo { height: 50px;
-padding-left:10px;
-padding-bottom: 10px;
-padding-right: 0px;}
+.topbar{
+  top:0px;
+  background-color: #888888;
+  height: 60px;
+  width:100%;
+  padding-left: 10px;
+  padding-top: 10px;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  position:fixed;
+}
+
 .container{
+  margin-left: 220px;
   width: 100%;
-  top: 0px;
+  margin-top: 75px;
 }
 </style>
 

@@ -1,5 +1,5 @@
 const express = require('express');
-const { Session, User, Exercise, Goal, Meal} = require('./user');
+const { Session, User, Exercise, Goal, Meal} = require('./model');
 
 var session = new Session();
 
