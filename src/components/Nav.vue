@@ -2,13 +2,17 @@
   <nav vertical class="navbar-dark">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <router-link class="nav-link" exact-active-class="active" to="/">Home</router-link>
+        <router-link class="btn btn-outline-dark" exact-active-class="active" to="/">Your Profile</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" exact-active-class="active" to="/about">About</router-link>
+        <router-link class="btn btn-outline-dark" exact-active-class="active" to="/calories">Your Calories</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" exact-active-class="active" to="/game">Game</router-link>
+        <router-link class="btn btn-outline-dark" exact-active-class="active" to="/workouts">Your Workouts</router-link>
+      </li>
+      <li class="nav-item">
+      <a @click.prevent="login" class="btn btn-outline-primary" :class="{disabled: userId() !== null}">Sign In</a>
+          <i v-if="userId() !== null">(Welcome {{session.users[userId()].name}})</i>
       </li>
     </ul>
     </nav>
@@ -38,10 +42,37 @@ nav {
     padding: 6px 12px;
     
   }
-  
-
 }
-.navbar-dark .navbar-nav .nav-link {
-    color:red;
-  }
+
 </style>
+
+<script>
+import * as api from '@/services/api_access';
+import * as fb from '@/services/facebook';
+
+// eslint-disable-next-line
+let loopTimer = null;
+export default {
+    data(){
+        return {
+            state: {
+                users: []
+            },
+        }
+    },
+    methods: {
+        refresh(){
+            api.GetState()
+            .then(x=> this.state = x)
+        },
+        getFBPictures(){
+            fb.GetPhotos( photos => this.fbPictures = photos.data );
+        },
+        login() {
+            fb.FBLogin();
+            //.then(()=> api.GetMyCaptions().then(x=> this.myCaptions = x) )
+        },
+        userId: ()=> api.userId
+    },
+}
+</script>

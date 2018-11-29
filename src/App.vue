@@ -14,6 +14,7 @@
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 .topbar{
   top:0px;
+  color:#343a40;
   background-color: #888888;
   height: 60px;
   width:100%;
