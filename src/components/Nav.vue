@@ -11,8 +11,8 @@
         <router-link class="btn btn-outline-dark" exact-active-class="active" to="/workouts">Your Workouts</router-link>
       </li>
       <li class="nav-item">
-      <a @click.prevent="login" class="btn btn-outline-primary" :class="{disabled: userId() !== null}">Sign In</a>
-          <i v-if="userId() !== null">(Welcome {{session.users[userId()].name}})</i>
+        <a @click.prevent="login" class="btn btn-outline-primary" :class="{disabled: userId() !== null}">Sign In</a>
+            <i v-if="userId() !== null">Welcome {{Session.users[userId()].name}}</i>
       </li>
     </ul>
     </nav>
@@ -20,7 +20,8 @@
 </template>
 
 <style lang="scss">
-@import "C:/Users/Michael/Desktop/HW/WP/Fitnessing/node_modules/bootstrap/scss/bootstrap.scss";
+@import "C:/Users/mike6/Desktop/Hw/WP/fitnessing/node_modules/bootstrap/scss/bootstrap.scss";
+        //"C:/Users/Michael/Desktop/HW/WP/Fitnessing/node_modules/bootstrap/scss/bootstrap.scss";
 
 nav {
   top: 60px;

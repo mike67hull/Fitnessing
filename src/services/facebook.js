@@ -2,7 +2,7 @@ import * as api from './api_access'
 
 window.fbAsyncInit = function() {
     FB.init({
-      appId      : '296547064527762',
+      appId      : '311763429435890',
       cookie     : true,
       xfbml      : true,
       version    : 'v3.0'
