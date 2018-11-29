@@ -31,13 +31,14 @@
   margin-left: 220px;
   width: 100%;
   margin-top: 75px;
+  
 }
 </style>
 
 <script>
 // @ is an alias to /src
 import Nav from '@/components/Nav.vue'
-
+import '@/services/facebook';
 export default {
   name: 'home',
   components: {

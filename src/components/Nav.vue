@@ -16,7 +16,7 @@
 </template>
 
 <style lang="scss">
-@import "C:/Users/mike6/Desktop/Hw/WP/fitnessing/node_modules/bootstrap/scss/bootstrap.scss";
+@import "C:/Users/Michael/Desktop/HW/WP/Fitnessing/node_modules/bootstrap/scss/bootstrap.scss";
 
 nav {
   top: 60px;

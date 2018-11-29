@@ -3,15 +3,27 @@ class Session{
     constructor(){
         this.users = [];
     }
+
+    login(name, fbid, access_token){
+        let User = this.users.find(x=> x.fbid == fbid);
+        if(!User){
+            User = new User(name, this.users.length, fbid);
+            this.players.push(User);
+        }
+        User.access_token = access_token;
+        return User;
+    }
+
 }
 
 //A user has a username, password, a set of goals, a list of
 // exercises accomplished, and the list of friends the use would like to share their data with
 class User{
-    constructor(username, password, weight){
-        this.username = username;
-        this.password = password;
-        this.weight = weight;
+    constructor(name, id, fbid){
+        this.name = name;
+        this.id = id;
+        this.fbid = fbid;
+        this.weight = 0;
         this.goals = [];
         this.exercises = [];
         this.friends = [];
@@ -47,6 +59,7 @@ class Meal{
         this.calories = calories;
     }
 }
+
 
 //Exporting the classes
 module.exports = {
