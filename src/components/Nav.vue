@@ -2,7 +2,7 @@
   <nav vertical class="navbar-dark">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <router-link class="btn btn-outline-dark" exact-active-class="active" to="/">Your Profile</router-link>
+        <router-link class="btn btn-outline-dark" exact-active-class="active" to="/profile">Your Profile</router-link>
       </li>
       <li class="nav-item">
         <router-link class="btn btn-outline-dark" exact-active-class="active" to="/calories">Your Calories</router-link>
@@ -20,8 +20,8 @@
 </template>
 
 <style lang="scss">
-@import "C:/Users/mike6/Desktop/Hw/WP/fitnessing/node_modules/bootstrap/scss/bootstrap.scss";
-        //"C:/Users/Michael/Desktop/HW/WP/Fitnessing/node_modules/bootstrap/scss/bootstrap.scss";
+//@import "C:/Users/mike6/Desktop/Hw/WP/fitnessing/node_modules/bootstrap/scss/bootstrap.scss";
+@import "C:/Users/Michael/Desktop/HW/WP/Fitnessing/node_modules/bootstrap/scss/bootstrap.scss";
 
 nav {
   top: 60px;

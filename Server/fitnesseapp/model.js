@@ -2,13 +2,19 @@
 class Session{
     constructor(){
         this.users = [];
+        this.currentUser = null;
+    }
+
+    getCurrentUser(){
+        return this.currentUser;
     }
 
     login(name, fbid, access_token){
         let User = this.users.find(x=> x.fbid == fbid);
         if(!User){
             User = new User(name, this.users.length, fbid);
-            this.players.push(User);
+            this.users.push(User);
+            this.currentUser = User;
         }
         User.access_token = access_token;
         return User;
@@ -29,7 +35,6 @@ class User{
         this.friends = [];
         this.meals = [];
     }
-
 }
 
 //An exercise has a type, a time started, and a duration of the exercise

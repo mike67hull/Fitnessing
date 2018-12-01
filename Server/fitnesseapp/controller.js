@@ -6,14 +6,13 @@ var session = new Session();
 const app = express.Router();
 
 //Posting list of users of current session
-app.get('/', (req, res) => {
-    res.send(session.users);
+app.get('/profile', (req, res) => {
+    res.send({...session, currentUser: session.getCurrentUser()});
 })
 
 //Adding new user to list of users
-app.post('/', (req, res) => {
-    const user = new User(req.body.username, req.body.password, req.body.weight);
-    session.users.push(user);
+app.post('/users', (req, res) => {
+    const user = new User(req.body.name, req.body.fbid, req.body.access_token);
     res.send(user);
 })
 
