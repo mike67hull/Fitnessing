@@ -6,14 +6,19 @@ var session = new Session();
 const app = express.Router();
 
 //Posting list of users of current session
-app.get('/profile', (req, res) => {
-    res.send({...session, currentUser: session.getCurrentUser()});
+app.get('/', (req, res) => {
+    res.send({...session, users: session.getCurrentUser()});
 })
 
 //Adding new user to list of users
 app.post('/users', (req, res) => {
-    const user = new User(req.body.name, req.body.fbid, req.body.access_token);
+    const user = session.login(req.body.name, req.body.fbid, req.body.access_token);
     res.send(user);
+})
+
+app.post('/currentuser/weight', (req, res) => {
+    session.setWeight(req.body.w);
+    res.send(session.getWeight())
 })
 
 //Adding new exercise to a specific user

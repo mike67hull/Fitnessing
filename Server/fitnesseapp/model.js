@@ -5,19 +5,30 @@ class Session{
         this.currentUser = null;
     }
 
+    getUsers(){
+        return this.users;
+    }
+
     getCurrentUser(){
         return this.currentUser;
     }
 
+    setWeight(w){
+        this.currentUser.weight = w;
+    }
+
+    getWeight(){
+        return this.currentUser.weight;
+    }
     login(name, fbid, access_token){
-        let User = this.users.find(x=> x.fbid == fbid);
-        if(!User){
-            User = new User(name, this.users.length, fbid);
-            this.users.push(User);
-            this.currentUser = User;
+        let user = this.users.find(x=> x.fbid == fbid);
+        if(!user){
+            user = new User(name, this.users.length, fbid);
+            this.users.push(user);
+            this.currentUser = user;
         }
-        User.access_token = access_token;
-        return User;
+        user.access_token = access_token;
+        return user;
     }
 
 }
@@ -30,10 +41,11 @@ class User{
         this.id = id;
         this.fbid = fbid;
         this.weight = 0;
-        this.goals = [];
-        this.exercises = [];
-        this.friends = [];
-        this.meals = [];
+        this.currentCalories = 0;
+        //this.goals = [];
+        //this.exercises = [];
+        //this.friends = [];
+        //this.meals = [];
     }
 }
 

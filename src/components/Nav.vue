@@ -12,7 +12,6 @@
       </li>
       <li class="nav-item">
         <a @click.prevent="login" class="btn btn-outline-primary" :class="{disabled: userId() !== null}">Sign In</a>
-            <i v-if="userId() !== null">Welcome {{Session.users[userId()].name}}</i>
       </li>
     </ul>
     </nav>
@@ -20,8 +19,8 @@
 </template>
 
 <style lang="scss">
-//@import "C:/Users/mike6/Desktop/Hw/WP/fitnessing/node_modules/bootstrap/scss/bootstrap.scss";
-@import "C:/Users/Michael/Desktop/HW/WP/Fitnessing/node_modules/bootstrap/scss/bootstrap.scss";
+@import "C:/Users/mike6/Desktop/Hw/WP/fitnessing/node_modules/bootstrap/scss/bootstrap.scss";
+//@import "C:/Users/Michael/Desktop/HW/WP/Fitnessing/node_modules/bootstrap/scss/bootstrap.scss";
 
 nav {
   top: 60px;
@@ -57,9 +56,16 @@ export default {
     data(){
         return {
             state: {
+                currentUser: "",
                 users: []
             },
         }
+    },
+     created(){
+        loopTimer = setInterval(this.refresh, 1000);
+        //if(api.playerId !== null && this.myCaptions.length == 0){
+        //    api.GetMyCaptions().then(x=> this.myCaptions = x);
+        //}
     },
     methods: {
         refresh(){

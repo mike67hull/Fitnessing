@@ -1,4 +1,4 @@
-const api_root = process.env.VUE_APP_API_ROOT;
+const api_root = "http://localhost:80/session";
 export let userId = null;
 
 export function GetState(){
@@ -6,8 +6,12 @@ export function GetState(){
 }
 
 export function Login(name, fbid, access_token){
-    return myFetch(api_root + "/profile", { name, fbid, access_token })
+    return myFetch(api_root + '/users', { name, fbid, access_token })
             .then(x=> userId = x.id);
+}
+
+export function setWeight(w){
+    return myFetch(api_root + '/currentuser/weight', { w })
 }
 
   function myFetch(url = ``, data = null) {
