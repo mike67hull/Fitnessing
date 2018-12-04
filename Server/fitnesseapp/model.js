@@ -1,8 +1,40 @@
 //Each "session" has a list of users
 class Session{
     constructor(){
-        this.users = [];
+        this.users = [
+            {
+                name: "Rob",
+                id: 0,
+                weight: 180,
+                calories: 1700,
+                age: 22,
+                height: 6,
+                friends: []
+            },
+            {
+                name: "Kenny",
+                id: 1,
+                weight: 190,
+                calories: 1500,
+                age: 21,
+                height: 5,
+                friends: []
+            }
+        ];
         this.currentUser = null;
+    }
+
+    getFriends(){
+        return this.currentUser;
+    }
+
+    removeFriend(f){
+        var index = this.currentUser.friends.indexOf(f);
+        this.currentUser.friends.splice(index);
+    }
+
+    addFriend(f){
+        this.currentUser.friends.push(f.f);
     }
 
     getUsers(){
@@ -14,12 +46,23 @@ class Session{
     }
 
     setWeight(w){
-        this.currentUser.weight = w;
+        let user = this.currentUser;
+        user.weight = w.iWeight;
     }
 
     getWeight(){
         return this.currentUser.weight;
     }
+
+    setCalories(c){
+        let user = this.currentUser;
+        user.calories = c.iCals;
+    }
+
+    getCalories(){
+        return this.currentUser.calories;
+    }
+
     login(name, fbid, access_token){
         let user = this.users.find(x=> x.fbid == fbid);
         if(!user){
@@ -41,10 +84,12 @@ class User{
         this.id = id;
         this.fbid = fbid;
         this.weight = 0;
-        this.currentCalories = 0;
+        this.calories = 0;
+        this.age = 0;
+        this.height = 0;
         //this.goals = [];
         //this.exercises = [];
-        //this.friends = [];
+        this.friends = [0,1]
         //this.meals = [];
     }
 }

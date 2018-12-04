@@ -7,10 +7,30 @@ const app = express.Router();
 
 //Posting list of users of current session
 app.get('/', (req, res) => {
-    res.send({...session, users: session.getCurrentUser()});
+    res.send({...session, users: session.getUsers()});
 })
 
-//Adding new user to list of users
+//Getting list of users
+app.get('/users', (req, res) => {
+    res.send({...session, users: session.getUsers()});
+})
+
+//Getting currentusers friends
+app.get('/currentuser/friends', (req, res) => {
+    res.send(session.getFriends());
+})
+
+app.post('/currentuser/friends', (req, res) => {
+    session.removeFriend(req.body.f);
+    res.send(session.getFriends())
+})
+
+app.post('/currentuser/friends/add', (req, res) => {
+    session.addFriend(req.body.f);
+    res.send(session.getFriends())
+})
+
+//Adding new user to list of users and setting as current user
 app.post('/users', (req, res) => {
     const user = session.login(req.body.name, req.body.fbid, req.body.access_token);
     res.send(user);
@@ -19,6 +39,11 @@ app.post('/users', (req, res) => {
 app.post('/currentuser/weight', (req, res) => {
     session.setWeight(req.body.w);
     res.send(session.getWeight())
+})
+
+app.post('/currentuser/calories', (req, res) => {
+    session.setCalories(req.body.c);
+    res.send(session.getCalories())
 })
 
 //Adding new exercise to a specific user

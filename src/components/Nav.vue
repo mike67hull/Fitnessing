@@ -10,8 +10,11 @@
       <li class="nav-item">
         <router-link class="btn btn-outline-dark" exact-active-class="active" to="/workouts">Your Workouts</router-link>
       </li>
+
       <li class="nav-item">
-        <a @click.prevent="login" class="btn btn-outline-primary" :class="{disabled: userId() !== null}">Sign In</a>
+        <div v-if="userId() === null">
+          <a @click.prevent="login" class="btn btn-outline-primary" :class="{disabled: state.currentUser !== null}">Sign In</a>
+        </div>
       </li>
     </ul>
     </nav>
@@ -56,16 +59,13 @@ export default {
     data(){
         return {
             state: {
-                currentUser: "",
+                currentUser: null,
                 users: []
             },
         }
     },
      created(){
         loopTimer = setInterval(this.refresh, 1000);
-        //if(api.playerId !== null && this.myCaptions.length == 0){
-        //    api.GetMyCaptions().then(x=> this.myCaptions = x);
-        //}
     },
     methods: {
         refresh(){
@@ -77,7 +77,6 @@ export default {
         },
         login() {
             fb.FBLogin();
-            //.then(()=> api.GetMyCaptions().then(x=> this.myCaptions = x) )
         },
         userId: ()=> api.userId
     },

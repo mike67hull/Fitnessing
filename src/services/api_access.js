@@ -14,6 +14,26 @@ export function setWeight(w){
     return myFetch(api_root + '/currentuser/weight', { w })
 }
 
+export function setCalories(c){
+    return myFetch(api_root + '/currentuser/calories', { c })
+}
+
+export function getUsers(){
+    return myFetch(api_root + "/users")
+}
+
+export function getFriends(){
+    return myFetch(api_root + "/currentuser/friends")
+}
+
+export function removeFriend(f){
+    return myFetch(api_root + "/currentuser/friends", {f})
+}
+
+export function addFriend(f){
+    return myFetch(api_root + "/currentuser/friends/add", {f})
+}
+
   function myFetch(url = ``, data = null) {
       let options = {
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
