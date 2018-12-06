@@ -18,6 +18,14 @@ export function setCalories(c){
     return myFetch(api_root + '/currentuser/calories', { c })
 }
 
+export function setAge(a){
+    return myFetch(api_root + '/currentuser/age', { a })
+}
+
+export function setHeight(h){
+    return myFetch(api_root + '/currentuser/height', { h })
+}
+
 export function getUsers(){
     return myFetch(api_root + "/users")
 }

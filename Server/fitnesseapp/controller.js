@@ -30,7 +30,6 @@ app.post('/currentuser/friends/add', (req, res) => {
     res.send(session.getFriends())
 })
 
-//Adding new user to list of users and setting as current user
 app.post('/users', (req, res) => {
     const user = session.login(req.body.name, req.body.fbid, req.body.access_token);
     res.send(user);
@@ -44,6 +43,16 @@ app.post('/currentuser/weight', (req, res) => {
 app.post('/currentuser/calories', (req, res) => {
     session.setCalories(req.body.c);
     res.send(session.getCalories())
+})
+
+app.post('/currentuser/age', (req, res) => {
+    session.setAge(req.body.a);
+    res.send(session.getAge())
+})
+
+app.post('/currentuser/height', (req, res) => {
+    session.setHeight(req.body.h);
+    res.send(session.getHeight())
 })
 
 //Adding new exercise to a specific user

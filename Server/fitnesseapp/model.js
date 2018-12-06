@@ -29,8 +29,8 @@ class Session{
     }
 
     removeFriend(f){
-        var index = this.currentUser.friends.indexOf(f);
-        this.currentUser.friends.splice(index);
+        var index = this.currentUser.friends.indexOf(f.f);
+        this.currentUser.friends.splice(index, 1);
     }
 
     addFriend(f){
@@ -48,15 +48,41 @@ class Session{
     setWeight(w){
         let user = this.currentUser;
         user.weight = w.iWeight;
+        this.updateCalories();
     }
 
     getWeight(){
         return this.currentUser.weight;
     }
 
+    setAge(a){
+        let user = this.currentUser;
+        user.age = a.iAge;
+        this.updateCalories();
+    }
+
+    getAge(){
+        return this.currentUser.age;
+    }
+
+    setHeight(h){
+        let user = this.currentUser;
+        user.height = h.iHeight;
+        this.updateCalories();
+    }
+
+    getHeight(){
+        return this.currentUser.height;
+    }
+
     setCalories(c){
         let user = this.currentUser;
         user.calories = c.iCals;
+        this.updateCalories();
+    }
+
+    updateCalories(){
+        this.currentUser.recCalories = this.currentUser.calCalc();
     }
 
     getCalories(){
@@ -87,10 +113,16 @@ class User{
         this.calories = 0;
         this.age = 0;
         this.height = 0;
+        this.recCalories = this.calCalc();
         //this.goals = [];
         //this.exercises = [];
         this.friends = [0,1]
         //this.meals = [];
+    }
+    //(6.3 x body weight in lbs.) + (12.9 x height in inches) - (6.8 x age in years) (CRUDE RECOMMENDED CALORIE INTAKE)
+    calCalc(){
+        var cal = (6.3 * this.weight) + (12.9 * (this.height*12)) - (6.8 * this.age);
+        return parseInt(cal);
     }
 }
 

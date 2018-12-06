@@ -2,17 +2,23 @@
   <nav vertical class="navbar-dark">
     <ul class="navbar-nav">
       <li class="nav-item">
+        <div v-if="state.currentUser !== null">
         <router-link class="btn btn-outline-dark" exact-active-class="active" to="/profile">Your Profile</router-link>
+        </div>
       </li>
       <li class="nav-item">
+        <div v-if="state.currentUser !== null">
         <router-link class="btn btn-outline-dark" exact-active-class="active" to="/calories">Your Calories</router-link>
+        </div>
       </li>
       <li class="nav-item">
+        <div v-if="state.currentUser !== null">
         <router-link class="btn btn-outline-dark" exact-active-class="active" to="/workouts">Your Workouts</router-link>
+        </div>
       </li>
 
       <li class="nav-item">
-        <div v-if="userId() === null">
+        <div v-if="state.currentUser === null">
           <a @click.prevent="login" class="btn btn-outline-primary" :class="{disabled: state.currentUser !== null}">Sign In</a>
         </div>
       </li>

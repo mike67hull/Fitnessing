@@ -3,10 +3,19 @@
         <div class="jumbotron">
             <h1 class="display-4">Welcome back {{state.currentUser.name}}!</h1>
             <hr class="my-4">
-            <a @click.prevent="setWeight()" class="btn btn-warning btn-sm" role="button">Change Weight</a>
+            <div v-if="state.currentUser.age === 0">
+                <a @click.prevent="setAge()" class="btn btn-warning btn-sm" role="button">Set Age</a>
+            </div>
+            <h5>Your Age: {{state.currentUser.age}}</h5>
+            <div v-if="state.currentUser.height === 0">
+                <a @click.prevent="setHeight()" class="btn btn-warning btn-sm" role="button">Set Height</a>
+            </div>
+            <h5>Your Height: {{state.currentUser.height}}</h5>
+            <div v-if="state.currentUser.weight === 0">
+                <a @click.prevent="setWeight()" class="btn btn-warning btn-sm" role="button">Set Weight</a>
+            </div>
             <h5>Your weight: {{state.currentUser.weight}}lbs</h5>
-            <a @click.prevent="setCalories()" class="btn btn-warning btn-sm" role="button">Change Calories</a>
-            <h5>Your current calories for the day: {{state.currentUser.calories}}</h5>
+                <h5>Your current calories for the day: {{state.currentUser.calories}}</h5>
         </div>
             <div class="card">
                 <h5 class="card-header">Friends</h5>
@@ -50,13 +59,13 @@ export default {
                 users: []
             },
             currentUser: null,
-            myId: null,
+            /*myId: null,
             myName: [],
             myWeight: [],
             myAge: null,
             myCalories: null,
             myHeight: null,
-            myFriends: []
+            myFriends: []*/
         }
     },
      created(){
@@ -69,15 +78,26 @@ export default {
             //api.getFriends()
             //.then(x=> this.myFriends = x.friends)
         },
-        getFBPictures(){
-            fb.GetPhotos( photos => this.fbPictures = photos.data );
-        },
         login() {
             fb.FBLogin();
         },
         setWeight(){
             var iWeight = prompt("Enter weight", "100");
-            api.setWeight({iWeight});
+            if(iWeight != null && iWeight != ""){
+                api.setWeight({iWeight});
+            }
+        },
+        setAge(){
+            var iAge = prompt("Enter age", "21");
+            if(iAge != null && iAge != ""){
+                api.setAge({iAge});
+            }
+        },
+        setHeight(){
+            var iHeight = prompt("Enter height", "5.8");
+            if(iHeight != null && iHeight != ""){
+                api.setHeight({iHeight});
+            }
         },
         setCalories(){
             var iCals = prompt("Enter calories", "250");
