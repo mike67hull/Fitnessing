@@ -59,13 +59,6 @@ export default {
                 users: []
             },
             currentUser: null,
-            /*myId: null,
-            myName: [],
-            myWeight: [],
-            myAge: null,
-            myCalories: null,
-            myHeight: null,
-            myFriends: []*/
         }
     },
      created(){
@@ -75,8 +68,6 @@ export default {
         refresh(){
             api.GetState()
             .then(x=> this.state = x);
-            //api.getFriends()
-            //.then(x=> this.myFriends = x.friends)
         },
         login() {
             fb.FBLogin();
@@ -98,10 +89,6 @@ export default {
             if(iHeight != null && iHeight != ""){
                 api.setHeight({iHeight});
             }
-        },
-        setCalories(){
-            var iCals = prompt("Enter calories", "250");
-            api.setCalories({iCals});
         },
         getUsers(){
             return api.getUsers();

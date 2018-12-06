@@ -14,8 +14,12 @@ export function setWeight(w){
     return myFetch(api_root + '/currentuser/weight', { w })
 }
 
-export function setCalories(c){
+export function addCalories(c){
     return myFetch(api_root + '/currentuser/calories', { c })
+}
+
+export function setCalGoal(g){
+    return myFetch(api_root + '/currentuser/goal', { g })
 }
 
 export function setAge(a){

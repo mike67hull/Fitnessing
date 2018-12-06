@@ -12,7 +12,5 @@
 * ### Workout Manager Screen
     * Workout entry-Where user can enter the information for each workout
     * Daily progress-Where their daily workout summary is displayed
-    * Workout weekly/monthly-Tells user what they have done/what they need to do still to meet goals.
-    * Custom Workouts-Where the user can go to look up certain workout programs based off of their goals
     
     

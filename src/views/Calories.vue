@@ -3,8 +3,19 @@
     <div class="jumbotron">
             <h1 class="display-4">{{state.currentUser.name}}'s Calorie Management</h1>
             <hr class="my-4">
-            <h5>Your recommended calories to maintain weight: {{state.currentUser.recCalories}}</h5>
+            <div v-if="state.currentUser.goal === 0">
+                <a @click.prevent="setCalGoal()" class="btn btn-warning btn-sm" role="button">Set Calorie Goal</a>
+            </div>
+            <h5>Your caloric goal for today: {{state.currentUser.goal}}</h5>
+            <h5>Calories per day to maintain weight: {{state.currentUser.recCalories}}</h5>
             <h5>Your current calories for the day: {{state.currentUser.calories}}</h5>
+            <div v-if="state.currentUser.calories < state.currentUser.recCalories">
+                <p>(You will lose weight eating that many calories)</p>
+            </div>
+            <div v-if="state.currentUser.calories > state.currentUser.recCalories">
+                <p>(You will gain weight eating that many calories)</p>
+            </div>
+            <a @click.prevent="addCalories()" class="btn btn-success btn-sm" role="button">Add new meal calories</a>
     </div>
   </div>
 </template>
@@ -31,11 +42,17 @@ export default {
         refresh(){
             api.GetState()
             .then(x=> this.state = x);
-            //api.getFriends()
-            //.then(x=> this.myFriends = x.friends)
         },
         login() {
             fb.FBLogin();
+        },
+        addCalories(){
+            var iCals = prompt("Enter calories from the meal", "250");
+            api.addCalories({iCals});
+        },
+        setCalGoal(){
+            var iGoal = prompt("Enter your calorie goal for today", "1700");
+            api.setCalGoal({iGoal});
         },
         userId: ()=> api.userId
     },

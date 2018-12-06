@@ -1,4 +1,4 @@
-//Each "session" has a list of users
+//Each "session" has a list of users and current user
 class Session{
     constructor(){
         this.users = [
@@ -75,10 +75,15 @@ class Session{
         return this.currentUser.height;
     }
 
-    setCalories(c){
+    addCalories(c){
         let user = this.currentUser;
-        user.calories = c.iCals;
+        user.calories = user.calories + parseInt(c.iCals);
         this.updateCalories();
+    }
+
+    setCalGoal(g){
+        let user = this.currentUser;
+        user.goal = g.iGoal;
     }
 
     updateCalories(){
@@ -103,7 +108,6 @@ class Session{
 }
 
 //A user has a username, password, a set of goals, a list of
-// exercises accomplished, and the list of friends the use would like to share their data with
 class User{
     constructor(name, id, fbid){
         this.name = name;
@@ -114,10 +118,10 @@ class User{
         this.age = 0;
         this.height = 0;
         this.recCalories = this.calCalc();
-        //this.goals = [];
-        //this.exercises = [];
+        this.goal = 0;
+        this.workouts = [];
+        this.totWorkout = 0;
         this.friends = [0,1]
-        //this.meals = [];
     }
     //(6.3 x body weight in lbs.) + (12.9 x height in inches) - (6.8 x age in years) (CRUDE RECOMMENDED CALORIE INTAKE)
     calCalc(){
@@ -126,36 +130,16 @@ class User{
     }
 }
 
-//An exercise has a type, a time started, and a duration of the exercise
-class Exercise{
-    constructor(type, time, duration, id){
+//A workout has a type and length of workout
+class Workout{
+    constructor(id, type, length){
         this.id = id;
         this.type = type;
-        this.time = time;
-        this.duration = duration;
+        this.length = length;
     }
 }
-
-//A goal has a date and a weight(User wants to hit certain weight by said date)
-class Goal{
-    constructor(date, weight, id){
-        this.id = id;
-        this.date = date;
-        this.weight = weight;
-    }
-}
-
-//A meal has a date and calorie amount
-class Meal{
-    constructor(date, calories, id){
-        this.date = id;
-        this.date = date;
-        this.calories = calories;
-    }
-}
-
 
 //Exporting the classes
 module.exports = {
-    Session, User, Exercise, Goal, Meal
+    Session, User, Workout
 }
