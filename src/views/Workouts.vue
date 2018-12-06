@@ -4,6 +4,11 @@
             <h1 class="display-4">{{state.currentUser.name}}'s Workout Management</h1>
             <hr class="my-4">
             <h5>The total duration of your workouts today is  {{state.currentUser.totWorkout}} minutes</h5>
+            <form id="signup-form">
+              <input type="text" placeholder="Workout type" v-model="wt"/>
+              <input type="text" placeholder="Workout length(minutes)" v-model="wl"/>
+              <button @click.prevent="addWorkout()">Add workout</button>
+            </form>
     </div>
   </div>
 </template>
@@ -20,7 +25,9 @@ export default {
             state: {
                 users: []
             },
-            currentUser: null
+            currentUser: null,
+            wt: '',
+            wl: ''
         }
     },
      created(){
@@ -33,6 +40,9 @@ export default {
         },
         login() {
             fb.FBLogin();
+        },
+        addWorkout(){
+          api.addWorkout(this.wt, this.wl);
         },
         userId: ()=> api.userId
     },

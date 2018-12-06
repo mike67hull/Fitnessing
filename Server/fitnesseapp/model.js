@@ -105,6 +105,13 @@ class Session{
         return user;
     }
 
+    addWorkout(type, l){
+        let workout = new Workout(this.currentUser.workouts.length, type, l);
+        this.currentUser.workouts.push(workout);
+        this.currentUser.totWorkout = this.currentUser.totWorkout + parseInt(l);
+        return workout;
+    }
+
 }
 
 //A user has a username, password, a set of goals, a list of

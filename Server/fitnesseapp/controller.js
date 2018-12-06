@@ -32,6 +32,11 @@ app.post('/users', (req, res) => {
     res.send(user);
 })
 
+app.post('/currentuser/workouts', (req, res) => {
+    const workout = session.addWorkout(req.body.type, req.body.length);
+    res.send(workout);
+})
+
 app.post('/currentuser/weight', (req, res) => {
     session.setWeight(req.body.w);
     res.send(session.getWeight())

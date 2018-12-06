@@ -10,6 +10,10 @@ export function Login(name, fbid, access_token){
             .then(x=> userId = x.id);
 }
 
+export function addWorkout(type, length){
+    return myFetch(api_root + '/currentuser/workouts', { type, length })
+}
+
 export function setWeight(w){
     return myFetch(api_root + '/currentuser/weight', { w })
 }
