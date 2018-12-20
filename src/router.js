@@ -22,6 +22,11 @@ export default new Router({
       path: '/workouts',
       name: 'workouts',
       component: () => import(/* webpackChunkName: "about" */ './views/Workouts.vue')
+    },
+    {
+      path: '/autocomplete',
+      name: 'autocomplete',
+      component: () => import(/* webpackChunkName: "about" */ './views/Autocomplete.vue')
     }
   ]
 })

@@ -1,6 +1,10 @@
+var Vue = require('vue');
+
+Vue.use(require('vue-resource'));
 //Each "session" has a list of users and current user
 class Session{
     constructor(){
+        this.results = [];
         this.users = [
             {
                 name: "Rob",
@@ -22,6 +26,15 @@ class Session{
             }
         ];
         this.currentUser = null;
+    }
+    getRepositories(search, loading, vm){
+        /*vm.$http.get(`https://api.github.com/search/repositories?q=${search}`).then(res => {
+        vm.results = res.data.items
+        loading(false)
+        })*/
+        //this.results = `https://api.github.com/search/repositories?q=${search}`;
+        let results = vm.$http.get(`https://api.github.com/search/repositories?q=${search}`);  
+        return results;
     }
 
     getFriends(){

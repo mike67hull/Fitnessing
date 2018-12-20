@@ -17,6 +17,10 @@ app.get('/currentuser/friends', (req, res) => {
     res.send(session.getFriends());
 })
 
+app.get('/repositories', (req, res) => {
+    res.send({...session, results: session.getRepositories()});
+})
+
 app.post('/currentuser/friends', (req, res) => {
     session.removeFriend(req.body.f);
     res.send(session.getFriends())
